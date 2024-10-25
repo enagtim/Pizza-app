@@ -3,7 +3,7 @@ import { ProductCardProps } from './Product.props';
 import styles from './ProductCard.module.css';
 function ProductCard ( props : ProductCardProps) {
 	return (
-		<Link to={'/'} className={styles['link']}>
+		<Link to={`/product/${props.id}`} className={styles['link']}>
 			<div className={styles['card']}>
 				<div className={styles['head']} style={{backgroundImage: `url('${props.image}')`}}>
 					<div className={styles['price']}>
@@ -19,7 +19,7 @@ function ProductCard ( props : ProductCardProps) {
 				</div>
 				<div className={styles['footer']}>
 					<div className={styles['title']}>{props.title}</div>
-					<div className={styles['desription']}>{props.description}</div>
+					<div className={styles['description']}>{props.description}</div>
 				</div>
 			</div>
 		</Link>
