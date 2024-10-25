@@ -1,6 +1,6 @@
 import { NavLink, Outlet} from 'react-router-dom';
 import styles from './LayoutMenu.module.css';
-import Button from '../../../components/Button/Button';
+import Button from '../../components/Button/Button';
 import cn from 'classnames';
 export function LayoutMenu(){
 	return (
@@ -25,11 +25,11 @@ export function LayoutMenu(){
 					Корзина</NavLink>
 				</div>
 				<Button className={styles['exit']}>
-					<img src="/exit-icon.svg" alt="Иконка выхода" />
+					<img src='/exit-icon.svg' alt="Иконка выхода" />
 					Выход
 				</Button>
 			</div>
-			<div>
+			<div className={styles['content']}>
 				<Outlet/>
 			</div>
 		</div>
