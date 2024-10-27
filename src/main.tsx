@@ -1,12 +1,16 @@
-import { StrictMode } from 'react';
+import { lazy, StrictMode, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
-import { Menu } from './pages/Menu/Menu';
 import {LayoutMenu} from './layout/LayoutMenu/LayoutMenu';
 import { Cart } from './pages/Cart/Cart';
 import { Error } from './pages/Error/Error';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, defer } from 'react-router-dom';
 import { Product } from './pages/Product/Product';
+import axios from 'axios';
+import { PREFIX } from './helpers/API';
+
+const Menu = lazy(() => import('./pages/Menu/Menu'));
+
 const router = createBrowserRouter([
 	{
 		path: '/', 
@@ -14,7 +18,7 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: '/', 
-				element: <Menu/>
+				element: <Suspense fallback={<>Загрузка...</>}><Menu/></Suspense>
 			}, 
 			{
 				path: '/cart',
@@ -22,7 +26,17 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/product/:id',
-				element: <Product/>
+				element: <Product/>,
+				errorElement: <>Ошибка</>, 
+				loader: async ({params}) => {
+					return defer({
+						data: new Promise((resolve, reject) => {
+							setTimeout(() => {
+								axios.get(`${PREFIX}/products/${params.id}`).then(data => resolve(data)).catch(e => reject(e));
+							}, 2000);
+						})
+					});			
+				} 
 			}
 		]
 	}, 
