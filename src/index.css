@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root {
     --primary-color: #FE724C;
     --primary-hover-color: #df5e3b;
@@ -10,3 +11,18 @@ body {
     font-family: "Open Sans", serif;
     font-style: normal;
 }
+=======
+:root {
+    --primary-color: #FE724C;
+    --primary-hover-color: #df5e3b;
+    --text-color: #000000;
+    --text-secondary-color: #9EA1B1;
+    --white-color: #FFFFFF;
+    --separator-color: #D4D6E0; 
+}
+body {
+    font-family: "Open Sans", serif;
+    font-style: normal;
+    margin: 0;
+}
+>>>>>>> feature/task-1-routing
