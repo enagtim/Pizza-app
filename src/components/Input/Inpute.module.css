@@ -1,0 +1,19 @@
+.input-wrapper {
+    color: var(--text-color);
+    font-family: "Open Sans";
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 10px;
+    border: 1px solid #EEE;
+    background: #FFF;
+    box-shadow: 15px 20px 45px 0px rgba(233, 233, 233, 0.25);
+    padding: 20px 0 20px 20px;
+}
+.input-wrapper::placeholder{
+     color: #C4C4C4;
+}
+.input-wrapper:focus{
+    outline-color: var(--primary-color);
+}  
